@@ -1,13 +1,13 @@
 const movieListEl = document.querySelector('.movie__list')
-const searchResultsEl = document.querySelector('.search__results')
+const searchResultsEl = document.querySelector('.search__results--response')
 
 async function onSearchChange(event) {
     const search = event.target.value;
-    searchResultsEl.innerHTML += " " + event.target.value;
+    searchResultsEl.innerHTML = event.target.value;
     const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=c5a8f649&s=${search}`)
     const moviesData = await movies.json()
 
-    movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join("")
+    movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).slice(0,6).join("")
 }
 
 async function renderMovies() {
@@ -17,7 +17,7 @@ async function renderMovies() {
     const moviesData = await movies.json()
 
 
-    movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join("")
+    movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).slice(0,6).join("")
 
 }
 
