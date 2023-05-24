@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/c8e4d183c2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="top--page">
+      <div class="top__content">
+        <nav>
+          <div class="nav__logo">
+            <figure class="nav__logo--container">
+              <img src="" class="nav__logo--img" alt="" />
+            </figure>
+            <h2 class="nav__logo--text">Flixer</h2>
+          </div>
+          <ul class="nav__list">
+            <li class="nav__link">
+              <a href="#" class="link__hover-effect">Home</a>
+            </li>
+            <li class="nav__link">
+              <a href="#" class="link__hover-effect">Find movies</a>
+            </li>
+            <li class="nav__link">
+              <a href="#" class="nav__link--button">CONTACT</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="movie__browse">
+          <h1 class="movie__browse--title">Browse movies</h1>
+          <div class="movie__search--wrap">
+            <input
+              type="text"
+              class="movie__browse--input"
+              placeholder="Search by Movie Title"
+              onchange="onSearchChange(event)"
+            />
+            <div class="search__button--wrapper">
+              <svg
+                data-v-390ceb07=""
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="search"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                class="search__button"
+              >
+                <path
+                  data-v-390ceb07=""
+                  fill="currentColor"
+                  d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  class=""
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </div>
+    <header>
+      <div class="header__top">
+        <h2 class="search__results">Search results:</h2>
+        <select id="filter">
+          <option value="" disabled selected>Sort</option>
+          <option value="NEWEST_TO_OLDEST">Newest to Oldest</option>
+          <option value="OLDEST_TO_NEWEST">Oldest to Newest</option>
+        </select>
+      </div>
+      <div class="movie__list">
+        <i class="fas fa-spinner movie__loading--spinner"></i>
+      </div>
+    </header>
+  </body>
+</html>
