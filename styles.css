@@ -179,6 +179,19 @@ HEADER
     padding: 40px 20px;
 }
 
+.trending--title {
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.trending {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
 #filter {
     color: black;
 }
@@ -197,10 +210,12 @@ HEADER
 }
 
 .movie__card {
-    width: 30%;
+    width: 22%;
     height: 300px;
     margin: 12px 12px; 
     background-color: darkgray;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .movie__card--container {
@@ -210,17 +225,21 @@ HEADER
 }
 
 .movie__poster {
-    width: 50%;
+    width: 60%;
     height: 100%;
 }
 
 .movie__description {
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     font-size: 20px;
+}
+
+.movie__title {
+    padding: 4px;
 }
 
 .movie__title,
@@ -264,3 +283,79 @@ header {
         transform: rotate(360deg);
     }
 }
+
+/* @media (max-width: 1660px) {
+    .movie__card {
+        width: 20%;
+    }
+} */
+
+@media (max-width: 1024px) {
+    .movie__description {
+        font-size: 14px;
+    }
+
+    .movie__card {
+        width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .movie__card {
+        width: 40%;
+    }
+
+    .movie__description {
+        font-size: 16px;
+    }
+
+
+}
+
+@media (max-width: 576px) {
+
+    nav {
+        text-align: center;
+        display: block;
+    }
+
+    .nav__list {
+        display: none;
+    }
+
+    .movie__browse {
+        text-align: center;
+    }
+
+    .movie__browse--title {
+        font-size: 34px;
+        letter-spacing: normal;
+    }
+
+    .movie__browse--input {
+        font-size: 16px;
+    }
+
+    .header__top {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .search__results {
+        padding-top: 24px;
+    }
+
+    .movie__card {
+        width: 100%;
+    }
+
+    .movie__description {
+        font-size: 16px;
+    }
+
+    .movie__title {
+        padding: 8px;
+    }
+}
+
+

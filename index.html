@@ -69,9 +69,48 @@
       <div class="overlay"></div>
     </div>
     <header>
+      <h2 class="trending--title">Trending</h2>
+      <div class="trending">
+      <div class="movie__card">
+        <div class="movie__card--container">
+        <img src="/assets/gotg3.png" class="movie__poster" alt="This image is unavailable.">
+        <div class="movie__description">
+          <h3 class="movie__title">Guardians of the Galaxy Vol. 3</h3>
+          <p class="movie__year"><b>2023</b></p>
+        </div>
+        </div>
+      </div>
+      <div class="movie__card">
+        <div class="movie__card--container">
+        <img src="/assets/avatar2.jpg" class="movie__poster" alt="This image is unavailable.">
+        <div class="movie__description">
+          <h3 class="movie__title">Avatar: The Way of Water</h3>
+          <p class="movie__year"><b>2022</b></p>
+        </div>
+        </div>
+      </div>
+      <div class="movie__card">
+        <div class="movie__card--container">
+        <img src="/assets/creed3.jpg" class="movie__poster" alt="This image is unavailable.">
+        <div class="movie__description">
+          <h3 class="movie__title">Creed III</h3>
+          <p class="movie__year"><b>2023</b></p>
+        </div>
+        </div>
+      </div>
+      <div class="movie__card">
+        <div class="movie__card--container">
+        <img src="/assets/mario.jpg" class="movie__poster" alt="This image is unavailable.">
+        <div class="movie__description">
+          <h3 class="movie__title">The Super Mario Bros. Movie</h3>
+          <p class="movie__year"><b>2023</b></p>
+        </div>
+        </div>
+      </div>
+    </div>
       <div class="header__top">
         <h2 class="search__results">Search results: <span class="search__results--response"></span></h2>
-        <select id="filter">
+        <select id="filter" onchange="filterMovies(event)">
           <option value="" disabled selected>Sort</option>
           <option value="NEWEST_TO_OLDEST">Newest to Oldest</option>
           <option value="OLDEST_TO_NEWEST">Oldest to Newest</option>

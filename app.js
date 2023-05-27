@@ -1,41 +1,55 @@
-const movieListEl = document.querySelector('.movie__list')
-const searchResultsEl = document.querySelector('.search__results--response')
+const movieListEl = document.querySelector('.movie__list');
+const searchResultsEl = document.querySelector('.search__results--response');
+const headerEl = document.querySelector('.header__top');
 
-async function onSearchChange(event) {
-    const search = event.target.value;
-    searchResultsEl.innerHTML = event.target.value;
-    const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=c5a8f649&s=${search}`)
-    const moviesData = await movies.json()
+async function renderMovies(filter, search) {
+  movieListEl.classList += ' movie__loading';
+  const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=c5a8f649&s=${search}`);
+  movieListEl.classList.remove('movie__loading');
+  const moviesData = await movies.json();
 
-    movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).slice(0,6).join("")
+  if (moviesData.Search) {
+    if (filter === 'NEWEST_TO_OLDEST') {
+      moviesData.Search.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
+    } else if (filter === 'OLDEST_TO_NEWEST') {
+      moviesData.Search.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
+    }
+
+    movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join('');
+  } else {
+    movieListEl.innerHTML = 'Search for any movie!';
+  }
+  movieListEl.style.visibility = 'visible';
 }
 
-async function renderMovies() {
-    movieListEl.classList += ' movie__loading'
-    const movies = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=c5a8f649&s=hello`) 
-    movieListEl.classList.remove('movie__loading')
-    const moviesData = await movies.json()
+function onSearchChange(event) {
+  const search = event.target.value;
+  searchResultsEl.innerHTML = search;
+  movieListEl.style.visibility = 'hidden';
+  renderMovies('', search);
+  headerEl.scrollIntoView({ behavior: 'smooth'});
+}
 
-
-    movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).slice(0,6).join("")
-
+function filterMovies(event) {
+  const filter = event.target.value;
+  const search = searchResultsEl.innerHTML;
+  renderMovies(filter, search);
 }
 
 function moviesHTML(movie) {
-    return `
+  return `
     <div class="movie__card">
         <div class="movie__card--container">
         <img src="${movie.Poster}" class="movie__poster" alt="This image is unavailable.">
         <div class="movie__description">
           <h3 class="movie__title">${movie.Title}</h3>
-          <p class="movie__year"><b>Year: </b>${movie.Year}</p>
-          <p class="movie__ID"><b>imdbID: </b>${movie.imdbID}</p>
-          <p class="movie__type"><b>Type: </b>${movie.Type}</p>
+          <p class="movie__year"><b></b>${movie.Year}</p>
         </div>
         </div>
-      </div>`
-} 
+      </div>`;
+}
 
 setTimeout(() => {
-  renderMovies();
-})
+  renderMovies('', ''); 
+});
+
