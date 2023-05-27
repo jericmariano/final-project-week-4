@@ -16,18 +16,19 @@
     <div id="top--page">
       <div class="top__content">
         <nav>
+          <a href="#">
           <div class="nav__logo">
             <figure class="nav__logo--container">
-              <img src="" class="nav__logo--img" alt="" />
+              <img src="./assets/flixr-PhotoRoom (1).png" class="nav__logo--img" alt="" />
             </figure>
-            <h2 class="nav__logo--text">Flixer</h2>
           </div>
+        </a>
           <ul class="nav__list">
             <li class="nav__link">
               <a href="#" class="link__hover-effect">Home</a>
             </li>
             <li class="nav__link">
-              <a href="#" class="link__hover-effect">Find movies</a>
+              <a href="#header__top" class="link__hover-effect">Find movies</a>
             </li>
             <li class="nav__link">
               <a href="#" class="nav__link--button">CONTACT</a>
@@ -108,7 +109,7 @@
         </div>
       </div>
     </div>
-      <div class="header__top">
+      <div id="header__top">
         <h2 class="search__results">Search results: <span class="search__results--response"></span></h2>
         <select id="filter" onchange="filterMovies(event)">
           <option value="" disabled selected>Sort</option>

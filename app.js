@@ -1,6 +1,6 @@
 const movieListEl = document.querySelector('.movie__list');
 const searchResultsEl = document.querySelector('.search__results--response');
-const headerEl = document.querySelector('.header__top');
+const headerEl = document.querySelector('#header__top');
 
 async function renderMovies(filter, search) {
   movieListEl.classList += ' movie__loading';
@@ -16,18 +16,15 @@ async function renderMovies(filter, search) {
     }
 
     movieListEl.innerHTML = moviesData.Search.map((movie) => moviesHTML(movie)).join('');
+    headerEl.scrollIntoView({ behavior: 'smooth'});
   } else {
-    movieListEl.innerHTML = 'Search for any movie!';
   }
-  movieListEl.style.visibility = 'visible';
 }
 
 function onSearchChange(event) {
   const search = event.target.value;
   searchResultsEl.innerHTML = search;
-  movieListEl.style.visibility = 'hidden';
   renderMovies('', search);
-  headerEl.scrollIntoView({ behavior: 'smooth'});
 }
 
 function filterMovies(event) {
